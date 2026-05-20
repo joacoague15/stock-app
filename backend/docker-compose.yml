@@ -1,0 +1,17 @@
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "file:/app/data/prod.db"
+      JWT_SECRET: ${JWT_SECRET}
+      FINNHUB_API_KEY: ${FINNHUB_API_KEY}
+      FIREBASE_SERVICE_ACCOUNT_PATH: "/app/firebase-service-account.json"
+    volumes:
+      - db-data:/app/data
+      - ./firebase-service-account.json:/app/firebase-service-account.json:ro
+    restart: unless-stopped
+
+volumes:
+  db-data:

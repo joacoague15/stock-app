@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+*.db
+firebase-service-account.json
+google-services.json
+*.keystore
+!debug.keystore
+.DS_Store
