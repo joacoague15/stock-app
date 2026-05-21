@@ -16,11 +16,15 @@ export async function setupFcm(): Promise<void> {
   }
   await messaging().requestPermission();
 
-  try {
+    try {
     const token = await messaging().getToken();
-    if (token) await api.registerFcmToken(token);
+    console.log('[FCM] got token:', token ? token.slice(0, 20) + '...' : 'NULL');
+    if (token) {
+      await api.registerFcmToken(token);
+      console.log('[FCM] token registered with backend OK');
+    }
   } catch (err) {
-    console.warn('FCM token register failed', err);
+    console.warn('[FCM] token register failed', err);
   }
 
   messaging().onMessage(async (msg) => {

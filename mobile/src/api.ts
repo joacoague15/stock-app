@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // Android emulator -> host: 10.0.2.2
 // iOS simulator   -> host: localhost
 // Physical device -> host LAN IP
-export const API_BASE = 'http://10.0.2.2:3000';
+export const API_BASE = 'https://stock-app-1h93.onrender.com';
 
 let inMemoryToken: string | null = null;
 
